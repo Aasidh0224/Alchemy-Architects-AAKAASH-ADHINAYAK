@@ -13,7 +13,7 @@ permissions:
 
 jobs:
   build-apk:
-    name: Build installable sideload APK
+    name: Build installable self-contained APK
     runs-on: ubuntu-latest
     timeout-minutes: 45
     defaults:
@@ -43,26 +43,50 @@ jobs:
         run: npx tsc --noEmit
       - name: Generate native Android project
         run: npx expo prebuild --platform android --no-install --clean
-      - name: Build self-contained APK
+      - name: Configure internal test signing
         run: |
           python3 - <<'PY'
           from pathlib import Path
+          import re
           p = Path('android/app/build.gradle')
           s = p.read_text()
-          needle = 'signingConfig signingConfigs.release'
-          if needle not in s:
-              raise SystemExit('Expected Expo release signing line was not found; stopping rather than building an incorrectly signed package.')
-          p.write_text(s.replace(needle, 'signingConfig signingConfigs.debug', 1))
+          bt = re.search(r'(?m)^\\s*buildTypes\\s*\\{', s)
+          if not bt:
+              raise SystemExit('Could not find buildTypes block in generated Gradle file.')
+          rel = re.search(r'(?m)^\\s*release\\s*\\{', s[bt.end():])
+          if not rel:
+              raise SystemExit('Could not find release build type in generated Gradle file.')
+          start = bt.end() + rel.start()
+          opening = s.find('{', start)
+          depth = 0
+          end = None
+          for i in range(opening, len(s)):
+              if s[i] == '{': depth += 1
+              elif s[i] == '}':
+                  depth -= 1
+                  if depth == 0:
+                      end = i + 1
+                      break
+          if end is None:
+              raise SystemExit('Could not parse release block in generated Gradle file.')
+          block = s[start:end]
+          if re.search(r'(?m)^\\s*signingConfig\\s+signingConfigs\\.\\w+', block):
+              block = re.sub(r'(?m)^\\s*signingConfig\\s+signingConfigs\\.\\w+', '            signingConfig signingConfigs.debug', block, count=1)
+          else:
+              block = block[:block.find('{') + 1] + '\\n            signingConfig signingConfigs.debug' + block[block.find('{') + 1:]
+          p.write_text(s[:start] + block + s[end:])
           PY
+      - name: Build self-contained APK
+        run: |
           cd android
           chmod +x gradlew
           ./gradlew --no-daemon assembleRelease
           mkdir -p ../artifacts
-          cp app/build/outputs/apk/release/app-release.apk ../artifacts/AAKAASH-ADHINAYAK-sideload.apk
+          cp app/build/outputs/apk/release/app-release.apk ../artifacts/AAKAASH-ADHINAYAK-debug-signed.apk
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
           name: AAKAASH-ADHINAYAK-Android-APK
-          path: mobile-native/artifacts/AAKAASH-ADHINAYAK-sideload.apk
+          path: mobile-native/artifacts/AAKAASH-ADHINAYAK-debug-signed.apk
           if-no-files-found: error
           retention-days: 30

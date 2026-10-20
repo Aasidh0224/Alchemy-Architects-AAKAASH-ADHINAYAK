@@ -1,12 +1,12 @@
 name: Publish Android release assets
 
 on:
-  # Bootstrap a release from an already verified APK artifact once this workflow is installed.
+  # Bootstrap the first release from an already verified APK artifact.
   push:
     branches: [main]
     paths:
       - '.github/workflows/publish-mobile-release.yml'
-  # Publish every future successful APK build automatically.
+  # Publish every future successful Android APK build automatically.
   workflow_run:
     workflows: ["Android APK"]
     types: [completed]
@@ -29,7 +29,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           EVENT_NAME: ${{ github.event_name }}
           UPSTREAM_RUN_ID: ${{ github.event.workflow_run.id }}
-          UPSTREAM_RUN_NUMBER: ${{ steps.source.outputs.run_number }}
+          UPSTREAM_RUN_NUMBER: ${{ github.event.workflow_run.run_number }}
           UPSTREAM_HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
         run: |
           set -euo pipefail
@@ -38,81 +38,16 @@ jobs:
             echo "run_number=$UPSTREAM_RUN_NUMBER" >> "$GITHUB_OUTPUT"
             echo "head_sha=$UPSTREAM_HEAD_SHA" >> "$GITHUB_OUTPUT"
           else
-            # Bootstrap with the newest already-successful build; normal workflow_run
-            # will publish the newly built APK when it finishes.
-            row="$(gh api "repos/$GITHUB_REPOSITORY/actions/workflows/android-apk.yml/runs?branch=main&status=success&per_page=1" --jq '.workflow_runs[0] | [.id, .run_number, .head_sha] | @tsv')"
-            if [ -z "$row" ] || [ "$row" = "null\tnull\tnull" ]; then
+            # The push event bootstraps the release from the newest completed,
+            # successful Android APK workflow run.
+            API="repos/$GITHUB_REPOSITORY/actions/workflows/android-apk.yml/runs?branch=main&status=success&per_page=1"
+            run_id="$(gh api "$API" --jq '.workflow_runs[0].id')"
+            run_number="$(gh api "$API" --jq '.workflow_runs[0].run_number')"
+            head_sha="$(gh api "$API" --jq '.workflow_runs[0].head_sha')"
+            if [ -z "$run_id" ] || [ "$run_id" = "null" ] || [ -z "$head_sha" ] || [ "$head_sha" = "null" ]; then
               echo "No successful Android APK workflow run is available." >&2
               exit 1
             fi
-            IFS=
-        uses: actions/download-artifact@v4
-        with:
-          name: AAKAASH-ADHINAYAK-Android-APK
-          path: dist/apk
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          run-id: ${{ steps.source.outputs.run_id }}
-
-      - name: Assemble release downloads
-        shell: bash
-        run: |
-          set -euo pipefail
-          test -s dist/apk/AAKAASH-ADHINAYAK-debug-signed.apk
-          cp dist/apk/AAKAASH-ADHINAYAK-debug-signed.apk dist/AAKAASH-ADHINAYAK.apk
-
-          # Native source archive
-          mkdir -p dist/source/AAKAASH_ADHINAYAK_NATIVE_MOBILE
-          cp -a mobile-native/. dist/source/AAKAASH_ADHINAYAK_NATIVE_MOBILE/
-          (
-            cd dist/source
-            zip -qr ../AAKAASH_ADHINAYAK_NATIVE_MOBILE_SOURCE.zip AAKAASH_ADHINAYAK_NATIVE_MOBILE
-          )
-
-          # Build kit: source + workflows + instructions
-          kit="dist/build-kit/AAKAASH_ADHINAYAK_APK_BUILD_KIT"
-          mkdir -p "$kit/mobile-native" "$kit/.github/workflows"
-          cp -a mobile-native/. "$kit/mobile-native/"
-          cp .github/workflows/android-apk.yml "$kit/.github/workflows/android-apk.yml"
-          if [ -f .github/workflows/publish-mobile-release.yml ]; then cp .github/workflows/publish-mobile-release.yml "$kit/.github/workflows/publish-mobile-release.yml"; fi
-          cp README.md "$kit/README.md"
-          if [ -f MOBILE_INSTALL_GUIDE.md ]; then cp MOBILE_INSTALL_GUIDE.md "$kit/MOBILE_INSTALL_GUIDE.md"; fi
-          if [ -f MOBILE_RELEASE_DOWNLOADS.md ]; then cp MOBILE_RELEASE_DOWNLOADS.md "$kit/MOBILE_RELEASE_DOWNLOADS.md"; fi
-          (
-            cd dist/build-kit
-            zip -qr ../AAKAASH_ADHINAYAK_APK_BUILD_KIT.zip AAKAASH_ADHINAYAK_APK_BUILD_KIT
-          )
-
-          cat > dist/RELEASE_NOTES.txt <<'EOF'
-          AAKAASH ADHINAYAK — Android prototype release
-
-          APK: debug-signed, for sideload testing only; not a Play Store production release.
-          Source: React Native / Expo project using generic synthetic records.
-          Scope: non-operational student prototype. No live military telemetry, weapon control, targeting, tactical routing or distress broadcast.
-          Security: demo PIN 0224 is development-only; release authentication uses device biometric/device-credential prompts.
-          Remote push requires a configured EAS project and backend sender. Cloud sync requires an authorised HTTPS service configured by the owner.
-          Physical-device, security, accessibility, battery and offline tests are still required before wider distribution.
-          EOF
-
-          (
-            cd dist
-            sha256sum AAKAASH-ADHINAYAK.apk AAKAASH_ADHINAYAK_NATIVE_MOBILE_SOURCE.zip AAKAASH_ADHINAYAK_APK_BUILD_KIT.zip > SHA256SUMS.txt
-          )
-
-      - name: Publish APK and source downloads as a GitHub Release
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: aakaash-android-build-${{ steps.source.outputs.run_number }}
-          name: "AAKAASH ADHINAYAK Android Test Build #${{ steps.source.outputs.run_number }}"
-          body_path: dist/RELEASE_NOTES.txt
-          prerelease: true
-          make_latest: false
-          fail_on_unmatched_files: true
-          files: |
-            dist/AAKAASH-ADHINAYAK.apk
-            dist/AAKAASH_ADHINAYAK_NATIVE_MOBILE_SOURCE.zip
-            dist/AAKAASH_ADHINAYAK_APK_BUILD_KIT.zip
-            dist/SHA256SUMS.txt
-\t' read -r run_id run_number head_sha <<< "$row"
             echo "run_id=$run_id" >> "$GITHUB_OUTPUT"
             echo "run_number=$run_number" >> "$GITHUB_OUTPUT"
             echo "head_sha=$head_sha" >> "$GITHUB_OUTPUT"
@@ -129,7 +64,7 @@ jobs:
           name: AAKAASH-ADHINAYAK-Android-APK
           path: dist/apk
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          run-id: ${{ github.event.workflow_run.id }}
+          run-id: ${{ steps.source.outputs.run_id }}
 
       - name: Assemble release downloads
         shell: bash
@@ -138,7 +73,6 @@ jobs:
           test -s dist/apk/AAKAASH-ADHINAYAK-debug-signed.apk
           cp dist/apk/AAKAASH-ADHINAYAK-debug-signed.apk dist/AAKAASH-ADHINAYAK.apk
 
-          # Native source archive
           mkdir -p dist/source/AAKAASH_ADHINAYAK_NATIVE_MOBILE
           cp -a mobile-native/. dist/source/AAKAASH_ADHINAYAK_NATIVE_MOBILE/
           (
@@ -146,12 +80,13 @@ jobs:
             zip -qr ../AAKAASH_ADHINAYAK_NATIVE_MOBILE_SOURCE.zip AAKAASH_ADHINAYAK_NATIVE_MOBILE
           )
 
-          # Build kit: source + workflows + instructions
           kit="dist/build-kit/AAKAASH_ADHINAYAK_APK_BUILD_KIT"
           mkdir -p "$kit/mobile-native" "$kit/.github/workflows"
           cp -a mobile-native/. "$kit/mobile-native/"
           cp .github/workflows/android-apk.yml "$kit/.github/workflows/android-apk.yml"
-          cp .github/workflows/publish-mobile-release.yml "$kit/.github/workflows/publish-mobile-release.yml"
+          if [ -f .github/workflows/publish-mobile-release.yml ]; then
+            cp .github/workflows/publish-mobile-release.yml "$kit/.github/workflows/publish-mobile-release.yml"
+          fi
           cp README.md "$kit/README.md"
           if [ -f MOBILE_INSTALL_GUIDE.md ]; then cp MOBILE_INSTALL_GUIDE.md "$kit/MOBILE_INSTALL_GUIDE.md"; fi
           if [ -f MOBILE_RELEASE_DOWNLOADS.md ]; then cp MOBILE_RELEASE_DOWNLOADS.md "$kit/MOBILE_RELEASE_DOWNLOADS.md"; fi

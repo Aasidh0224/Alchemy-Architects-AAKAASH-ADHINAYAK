@@ -40,6 +40,24 @@ npm run build
 
 No API keys are required for the root demo. Never commit real secrets or populated environment files.
 
+## Install on a phone (PWA)
+
+This curated demo is an installable Progressive Web App. After deployment over HTTPS, it can be added to an Android or iPhone home screen. This workflow does not produce an APK or app-store listing.
+
+### Android
+Open the HTTPS deployment in Chrome. Tap **Install app** in the header, or open Chrome's menu and choose **Install app** / **Add to Home screen**.
+
+### iPhone / iPad
+Open the HTTPS deployment in Safari. Tap **Share** → **Add to Home Screen** → **Add**.
+
+### Offline behaviour
+The service worker caches the application shell and static same-origin resources. It intentionally does not cache API responses. The generic demo planner can be opened offline after the app shell has been cached; server-side features require connectivity.
+
+### Important deployment note
+Adding PWA files to this repository does not modify the separate Google AI Studio deployment automatically. Deploy this repository to an HTTPS host first, then install that deployed URL.
+
+PWA assets are in `public/manifest.webmanifest`, `public/sw.js`, `public/icons/`, and the install component in `src/components/InstallAppButton.tsx`. See [mobile installation guide](MOBILE_INSTALL_GUIDE.md).
+
 ## Judge walkthrough
 1. Inspect the synthetic-data label in Command Centre.
 2. Run the planner and inspect assigned/unassigned tasks.

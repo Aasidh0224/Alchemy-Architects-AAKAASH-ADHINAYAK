@@ -1,0 +1,40 @@
+1
+00:00:00,000 --> 00:00:31,204
+This is AAKAASH ADHINAYAK, developed by Alchemy Architects for Smart India Hackathon 2026, problem statement SIH two six two five zero. The concept explores evidence-to-decision resource planning with structured data, constraint-aware candidate schedules, independent checks and controlled replanning. This video is a screenshot-based walkthrough from the supplied Google AI Studio export, not a live browser recording.
+
+2
+00:00:32,204 --> 00:00:56,815
+The Command Centre brings summary tiles, data quality signals, audit status and a three dimensional resource constellation into one view. The provided screenshot also labels the records as synthetic demonstration data. Any headline metric should be treated as a user interface value until its input records and calculation are reproducibly verified.
+
+3
+00:00:57,815 --> 00:01:30,310
+The Planning Sandbox is supported by a custom deterministic heuristic in the source. It ranks tasks, searches available time slots, and scores delays, workload balance and assignment changes. It considers readiness, capability tags, maintenance windows and resource availability. This is algorithmic optimisation, not machine learning, and the word optimal needs to be avoided unless a solver can prove optimality for a defined mathematical model.
+
+4
+00:01:31,310 --> 00:02:01,238
+The exported source contains an AviationWeather dot gov public civil weather request path, alongside seeded and fallback content. A connector is verified only when a real response, retrieval time, observation time, schema and failure path are captured. Cached or illustrative values must not be labelled live. The hosted website could not be independently smoke-tested through the available retrieval path for this walkthrough.
+
+5
+00:02:02,238 --> 00:02:28,263
+The proposed engineering flow starts with import, validation and normalisation. A generic scenario is then optimised and independently checked. Failed checks send the workflow back to input correction. A human reviews the candidate before any next step. Disruptions can trigger a rerun, and the run should preserve its inputs, assumptions and evidence for review.
+
+6
+00:02:29,263 --> 00:02:57,325
+The distinction for judges is important. The scheduling engine is a deterministic heuristic, and the validator is rule based. The predictive-maintenance interface shows remaining-useful-life style figures and model metrics, but the reviewed source did not show training, fitted model weights, a data split or reproducible inference. Therefore we should not claim that machine learning or deep learning has been implemented.
+
+7
+00:02:58,325 --> 00:03:33,483
+To add a real predictive experiment, first obtain an accessible and documented NASA C M A P S S simulation dataset and record its exact version and terms. Preprocess features and split by engine unit to avoid leakage. Train a simple baseline and a candidate model, produce held-out predictions, calculate metrics from those outputs and save the model, split manifest and run logs. The current displayed values should remain unverified until this pipeline exists.
+
+8
+00:03:34,483 --> 00:04:06,284
+Field validation is a planned next step, not a completed activity in the supplied evidence. Relevant public points of contact include the Airports Authority of India at Madurai Airport, the India Meteorological Department regional centre in Chennai and the AAI Civil Aviation Training College. The report provides a consultation plan and question guide. No visit, interview or endorsement should be claimed until real notes and permission are recorded.
+
+9
+00:04:07,284 --> 00:04:37,140
+Commercially, the most defensible first users are education, research and approved civilian workflows. Potential models include an institutional education licence, workflow workshops and private integration after appropriate review. Impact should be measured against an actual baseline with the same input scenarios. There are no verified customers, revenue, measured savings or procurement outcomes in the current evidence.
+
+10
+00:04:38,140 --> 00:05:10,372
+To present the project responsibly, demonstrate the parts that can be reproduced: generic task import, scheduling, independent validation, synthetic disruption replay and evidence export. Separate source-present features from static examples and planned work. Do not claim real military integration or AI accuracy without evidence. The accompanying reports are designed to support the PowerPoint narrative and identify the next experiments.
+

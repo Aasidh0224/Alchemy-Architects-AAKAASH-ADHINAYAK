@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+<rect width="1920" height="1080" fill="#05101e"/>
+<path d="M0 0V1080" stroke="#11263a" stroke-width="1"/>
+<path d="M60 0V1080" stroke="#11263a" stroke-width="1"/>
+<path d="M120 0V1080" stroke="#11263a" stroke-width="1"/>
+<path d="M180 0V1080" stroke="#11263a" stroke-width="1"/>
+<path d="M240 0V1080" stroke="#11263a" stroke-width="1"/>
+<path d="M300 0V1080" stroke="#11263a" stroke-width="1"/>
+<path d="M360 0V1080" stroke="#11263a" stroke-width="1"/>
+<path d="M420 0V1080" stroke="#11263a" stroke-width="1"/>
+<path d="M480 0V1080" stroke="#11263a" stroke-width="1"/>
+<path d="M540 0V1080" stroke="#11263a" stroke-width="1"/>
+<path d="M600 0V1080" stroke="#11263a" stroke-width="1"/>
+<path d="M660 0V1080" stroke="#11263a" stroke-width="1"/>
+<path d="M720 0V1080" stroke="#11263a" stroke-width="1"/>
+<path d="M780 0V1080" stroke="#11263a" stroke-width="1"/>
+<path d="M840 0V1080" stroke="#11263a" stroke-width="1"/>
+<path d="M900 0V1080" stroke="#11263a" stroke-width="1"/>
+<path d="M960 0V1080" stroke="#11263a" stroke-width="1"/>
+<path d="M1020 0V1080" stroke="#11263a" stroke-width="1"/>
+<path d="M1080 0V1080" stroke="#11263a" stroke-width="1"/>
+<path d="M1140 0V1080" stroke="#11263a" stroke-width="1"/>
+<path d="M1200 0V1080" stroke="#11263a" stroke-width="1"/>
+<path d="M1260 0V1080" stroke="#11263a" stroke-width="1"/>
+<path d="M1320 0V1080" stroke="#11263a" stroke-width="1"/>
+<path d="M1380 0V1080" stroke="#11263a" stroke-width="1"/>
+<path d="M1440 0V1080" stroke="#11263a" stroke-width="1"/>
+<path d="M1500 0V1080" stroke="#11263a" stroke-width="1"/>
+<path d="M1560 0V1080" stroke="#11263a" stroke-width="1"/>
+<path d="M1620 0V1080" stroke="#11263a" stroke-width="1"/>
+<path d="M1680 0V1080" stroke="#11263a" stroke-width="1"/>
+<path d="M1740 0V1080" stroke="#11263a" stroke-width="1"/>
+<path d="M1800 0V1080" stroke="#11263a" stroke-width="1"/>
+<path d="M1860 0V1080" stroke="#11263a" stroke-width="1"/>
+<path d="M0 0H1920" stroke="#11263a" stroke-width="1"/>
+<path d="M0 60H1920" stroke="#11263a" stroke-width="1"/>
+<path d="M0 120H1920" stroke="#11263a" stroke-width="1"/>
+<path d="M0 180H1920" stroke="#11263a" stroke-width="1"/>
+<path d="M0 240H1920" stroke="#11263a" stroke-width="1"/>
+<path d="M0 300H1920" stroke="#11263a" stroke-width="1"/>
+<path d="M0 360H1920" stroke="#11263a" stroke-width="1"/>
+<path d="M0 420H1920" stroke="#11263a" stroke-width="1"/>
+<path d="M0 480H1920" stroke="#11263a" stroke-width="1"/>
+<path d="M0 540H1920" stroke="#11263a" stroke-width="1"/>
+<path d="M0 600H1920" stroke="#11263a" stroke-width="1"/>
+<path d="M0 660H1920" stroke="#11263a" stroke-width="1"/>
+<path d="M0 720H1920" stroke="#11263a" stroke-width="1"/>
+<path d="M0 780H1920" stroke="#11263a" stroke-width="1"/>
+<path d="M0 840H1920" stroke="#11263a" stroke-width="1"/>
+<path d="M0 900H1920" stroke="#11263a" stroke-width="1"/>
+<path d="M0 960H1920" stroke="#11263a" stroke-width="1"/>
+<path d="M0 1020H1920" stroke="#11263a" stroke-width="1"/>
+<rect x="35" y="25" width="1850" height="105" rx="24" fill="#0a1f31" stroke="#2f6987" stroke-width="2"/>
+<text x="65" y="79" font-family="Arial" font-size="48" font-weight="700" fill="#ebf8ff">AAKAASH ADHINAYAK</text>
+<text x="68" y="112" font-family="monospace" font-size="16" fill="#5bddec">FLOWCHART | EVIDENCE-TO-DECISION RESOURCE PLANNING</text>
+<rect x="40" y="175" width="270" height="190" rx="20" fill="#0a1c2d" stroke="#2bb7da" stroke-width="3"/>
+<rect x="56" y="191" width="54" height="50" rx="12" fill="#2bb7da"/>
+<text x="66" y="224" font-family="Arial" font-size="22" font-weight="700" fill="#04121d">01</text>
+<text x="126" y="224" font-family="Arial" font-size="25" font-weight="700" fill="#eff8ff">IMPORT</text>
+<text x="64" y="276" font-family="Arial" font-size="17" fill="#b6cee0">CSV / JSON / public feeds</text>
+<text x="64" y="306" font-family="Arial" font-size="17" fill="#b6cee0">Source + timestamps</text>
+<rect x="350" y="175" width="270" height="190" rx="20" fill="#0a1c2d" stroke="#3ad5b2" stroke-width="3"/>
+<rect x="366" y="191" width="54" height="50" rx="12" fill="#3ad5b2"/>
+<text x="376" y="224" font-family="Arial" font-size="22" font-weight="700" fill="#04121d">02</text>
+<text x="436" y="224" font-family="Arial" font-size="25" font-weight="700" fill="#eff8ff">VALIDATE</text>
+<text x="374" y="276" font-family="Arial" font-size="17" fill="#b6cee0">Schema, values, duplicates</text>
+<text x="374" y="306" font-family="Arial" font-size="17" fill="#b6cee0">Freshness + provenance</text>
+<rect x="660" y="175" width="270" height="190" rx="20" fill="#0a1c2d" stroke="#55aee6" stroke-width="3"/>
+<rect x="676" y="191" width="54" height="50" rx="12" fill="#55aee6"/>
+<text x="686" y="224" font-family="Arial" font-size="22" font-weight="700" fill="#04121d">03</text>
+<text x="746" y="224" font-family="Arial" font-size="25" font-weight="700" fill="#eff8ff">NORMALISE</text>
+<text x="684" y="276" font-family="Arial" font-size="17" fill="#b6cee0">Canonical record model</text>
+<text x="684" y="306" font-family="Arial" font-size="17" fill="#b6cee0">Unknown states preserved</text>
+<rect x="970" y="175" width="270" height="190" rx="20" fill="#0a1c2d" stroke="#e7b149" stroke-width="3"/>
+<rect x="986" y="191" width="54" height="50" rx="12" fill="#e7b149"/>
+<text x="996" y="224" font-family="Arial" font-size="22" font-weight="700" fill="#04121d">04</text>
+<text x="1056" y="224" font-family="Arial" font-size="25" font-weight="700" fill="#eff8ff">SCENARIO</text>
+<text x="994" y="276" font-family="Arial" font-size="17" fill="#b6cee0">Generic task set</text>
+<text x="994" y="306" font-family="Arial" font-size="17" fill="#b6cee0">Constraints + objectives</text>
+<rect x="1280" y="175" width="270" height="190" rx="20" fill="#0a1c2d" stroke="#b394ff" stroke-width="3"/>
+<rect x="1296" y="191" width="54" height="50" rx="12" fill="#b394ff"/>
+<text x="1306" y="224" font-family="Arial" font-size="22" font-weight="700" fill="#04121d">05</text>
+<text x="1366" y="224" font-family="Arial" font-size="25" font-weight="700" fill="#eff8ff">OPTIMISE</text>
+<text x="1304" y="276" font-family="Arial" font-size="17" fill="#b6cee0">Deterministic heuristic</text>
+<text x="1304" y="306" font-family="Arial" font-size="17" fill="#b6cee0">Candidate plan + logs</text>
+<rect x="1590" y="175" width="270" height="190" rx="20" fill="#0a1c2d" stroke="#3bdbd2" stroke-width="3"/>
+<rect x="1606" y="191" width="54" height="50" rx="12" fill="#3bdbd2"/>
+<text x="1616" y="224" font-family="Arial" font-size="22" font-weight="700" fill="#04121d">06</text>
+<text x="1676" y="224" font-family="Arial" font-size="25" font-weight="700" fill="#eff8ff">VERIFY</text>
+<text x="1614" y="276" font-family="Arial" font-size="17" fill="#b6cee0">Independent checks</text>
+<text x="1614" y="306" font-family="Arial" font-size="17" fill="#b6cee0">PASS / REVIEW / REJECT</text>
+<path d="M312 270H343" stroke="#3fc9de" stroke-width="5" fill="none"/><path d="M327 260L343 270L327 280" stroke="#3fc9de" stroke-width="5" fill="none"/>
+<path d="M622 270H653" stroke="#3fc9de" stroke-width="5" fill="none"/><path d="M637 260L653 270L637 280" stroke="#3fc9de" stroke-width="5" fill="none"/>
+<path d="M932 270H963" stroke="#3fc9de" stroke-width="5" fill="none"/><path d="M947 260L963 270L947 280" stroke="#3fc9de" stroke-width="5" fill="none"/>
+<path d="M1242 270H1273" stroke="#3fc9de" stroke-width="5" fill="none"/><path d="M1257 260L1273 270L1257 280" stroke="#3fc9de" stroke-width="5" fill="none"/>
+<path d="M1552 270H1583" stroke="#3fc9de" stroke-width="5" fill="none"/><path d="M1567 260L1583 270L1567 280" stroke="#3fc9de" stroke-width="5" fill="none"/>
+<rect x="1300" y="440" width="270" height="170" rx="20" fill="#0a1c2d" stroke="#3bdbd2" stroke-width="3"/>
+<rect x="1316" y="456" width="54" height="50" rx="12" fill="#3bdbd2"/><text x="1326" y="489" font-family="Arial" font-size="22" font-weight="700" fill="#04121d">07</text>
+<text x="1386" y="489" font-family="Arial" font-size="22" font-weight="700" fill="#eff8ff">HUMAN REVIEW</text>
+<text x="1324" y="540" font-family="Arial" font-size="16" fill="#b6cee0">Evidence + caveats</text>
+<text x="1324" y="569" font-family="Arial" font-size="16" fill="#b6cee0">No auto-execution</text>
+<rect x="965" y="440" width="270" height="170" rx="20" fill="#0a1c2d" stroke="#ef7780" stroke-width="3"/>
+<rect x="981" y="456" width="54" height="50" rx="12" fill="#ef7780"/><text x="991" y="489" font-family="Arial" font-size="22" font-weight="700" fill="#04121d">08</text>
+<text x="1051" y="489" font-family="Arial" font-size="22" font-weight="700" fill="#eff8ff">REVISE INPUTS</text>
+<text x="989" y="540" font-family="Arial" font-size="16" fill="#b6cee0">Resolve quality issues</text>
+<text x="989" y="569" font-family="Arial" font-size="16" fill="#b6cee0">Re-run after change</text>
+<rect x="625" y="710" width="310" height="170" rx="20" fill="#0a1c2d" stroke="#f4c256" stroke-width="3"/>
+<rect x="641" y="726" width="54" height="50" rx="12" fill="#f4c256"/><text x="651" y="759" font-family="Arial" font-size="22" font-weight="700" fill="#04121d">09</text>
+<text x="711" y="759" font-family="Arial" font-size="22" font-weight="700" fill="#eff8ff">DYNAMIC REPLAN</text>
+<text x="649" y="810" font-family="Arial" font-size="16" fill="#b6cee0">Generic outage / delay</text>
+<text x="649" y="839" font-family="Arial" font-size="16" fill="#b6cee0">Recompute + compare</text>
+<rect x="990" y="710" width="310" height="170" rx="20" fill="#0a1c2d" stroke="#2bb7da" stroke-width="3"/>
+<rect x="1006" y="726" width="54" height="50" rx="12" fill="#2bb7da"/><text x="1016" y="759" font-family="Arial" font-size="22" font-weight="700" fill="#04121d">10</text>
+<text x="1076" y="759" font-family="Arial" font-size="22" font-weight="700" fill="#eff8ff">AUDIT + EXPORT</text>
+<text x="1014" y="810" font-family="Arial" font-size="16" fill="#b6cee0">Input snapshot + run ID</text>
+<text x="1014" y="839" font-family="Arial" font-size="16" fill="#b6cee0">Checks, assumptions, results</text>
+<rect x="1355" y="710" width="500" height="170" rx="20" fill="#0a1c2d" stroke="#a3a9b7" stroke-width="3"/>
+<text x="1375" y="759" font-family="Arial" font-size="22" font-weight="700" fill="#eff8ff">OPTIONAL RESEARCH LANE</text>
+<text x="1379" y="810" font-family="Arial" font-size="16" fill="#b6cee0">NASA C-MAPSS -> preprocess -> train -> test</text>
+<text x="1379" y="839" font-family="Arial" font-size="16" fill="#b6cee0">Future ML experiment; not implemented here</text>
+<path d="M1725 370V415H1578V433" stroke="#3fc9de" stroke-width="5" fill="none"/><path d="M1290 530H1243" stroke="#ef7780" stroke-width="4" fill="none"/><path d="M1100 440V405H785V372" stroke="#ef7780" stroke-width="4" fill="none"/><path d="M1435 610V665H780V702" stroke="#3fc9de" stroke-width="4" fill="none"/><path d="M937 790H982M1302 790H1345" stroke="#3fc9de" stroke-width="4" fill="none"/>
+<rect x="45" y="925" width="1830" height="110" rx="18" fill="#0c2234" stroke="#30647e" stroke-width="2"/><text x="70" y="970" font-family="Arial" font-size="24" font-weight="700" fill="#5bddec">ENGINEERING GATES</text><text x="70" y="1008" font-family="Arial" font-size="18" fill="#cfe1ef">Reject invalid input | Keep UNKNOWN explicit | Independently validate | Measure only reproducible outcomes</text></svg>

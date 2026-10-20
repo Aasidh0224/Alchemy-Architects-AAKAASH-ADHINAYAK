@@ -50,10 +50,10 @@ jobs:
           import re
           p = Path('android/app/build.gradle')
           s = p.read_text()
-          bt = re.search(r'(?m)^\\s*buildTypes\\s*\\{', s)
+          bt = re.search(r'(?m)^\s*buildTypes\s*\{', s)
           if not bt:
               raise SystemExit('Could not find buildTypes block in generated Gradle file.')
-          rel = re.search(r'(?m)^\\s*release\\s*\\{', s[bt.end():])
+          rel = re.search(r'(?m)^\s*release\s*\{', s[bt.end():])
           if not rel:
               raise SystemExit('Could not find release build type in generated Gradle file.')
           start = bt.end() + rel.start()
@@ -61,7 +61,8 @@ jobs:
           depth = 0
           end = None
           for i in range(opening, len(s)):
-              if s[i] == '{': depth += 1
+              if s[i] == '{':
+                  depth += 1
               elif s[i] == '}':
                   depth -= 1
                   if depth == 0:
@@ -70,10 +71,11 @@ jobs:
           if end is None:
               raise SystemExit('Could not parse release block in generated Gradle file.')
           block = s[start:end]
-          if re.search(r'(?m)^\\s*signingConfig\\s+signingConfigs\\.\\w+', block):
-              block = re.sub(r'(?m)^\\s*signingConfig\\s+signingConfigs\\.\\w+', '            signingConfig signingConfigs.debug', block, count=1)
+          if re.search(r'(?m)^\s*signingConfig\s+signingConfigs\.\w+', block):
+              block = re.sub(r'(?m)^\s*signingConfig\s+signingConfigs\.\w+', '            signingConfig signingConfigs.debug', block, count=1)
           else:
-              block = block[:block.find('{') + 1] + '\\n            signingConfig signingConfigs.debug' + block[block.find('{') + 1:]
+              brace = block.find('{')
+              block = block[:brace + 1] + '\n            signingConfig signingConfigs.debug' + block[brace + 1:]
           p.write_text(s[:start] + block + s[end:])
           PY
       - name: Build self-contained APK

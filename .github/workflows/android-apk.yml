@@ -7,6 +7,7 @@ on:
     paths:
       - 'mobile-native/**'
       - '.github/workflows/android-apk.yml'
+      - '.github/workflows/publish-mobile-release.yml'
 
 permissions:
   contents: read

@@ -24,6 +24,18 @@ This curated repository edition uses generic, explicitly synthetic examples. It 
 - Local rule-based VAYU NEXA helper grounded in current application state.
 - Research and design documentation.
 
+## Android app download
+
+The native React Native / Expo project lives in [`mobile-native/`](mobile-native/). Every successful Android build is packaged into a GitHub Release with:
+- `AAKAASH-ADHINAYAK.apk` — debug-signed APK for Android sideload/testing.
+- `AAKAASH_ADHINAYAK_NATIVE_MOBILE_SOURCE.zip` — mobile source archive.
+- `AAKAASH_ADHINAYAK_APK_BUILD_KIT.zip` — source plus GitHub Actions build workflow and instructions.
+- `SHA256SUMS.txt` — SHA-256 checksums for file integrity.
+
+Open the [Releases page](https://github.com/Aasidh0224/Alchemy-Architects-AAKAASH-ADHINAYAK/releases) and download the latest **AAKAASH ADHINAYAK Android Test Build**. Releases are debug-signed test builds, not production Play Store packages. Because this repository is private, GitHub access is required to retrieve its assets.
+
+The native app is a curated companion using generic synthetic data. It is not a one-to-one implementation of every hosted website feature, and it is not connected to operational services.
+
 ## Run locally
 Requires Node.js 20+ and npm.
 

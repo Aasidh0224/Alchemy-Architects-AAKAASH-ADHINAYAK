@@ -1,0 +1,75 @@
+{
+  "expo": {
+    "name": "AAKAASH ADHINAYAK",
+    "slug": "aakaash-adhinayak-mobile",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "scheme": "aakaash",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash-logo.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#050b14"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.alchemyarchitects.aakaashadhinayak",
+      "infoPlist": {
+        "NSFaceIDUsageDescription": "Use Face ID to unlock your AAKAASH ADHINAYAK local workspace."
+      }
+    },
+    "android": {
+      "package": "com.alchemyarchitects.aakaashadhinayak",
+      "versionCode": 1,
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#050b14"
+      },
+      "edgeToEdgeEnabled": true,
+      "permissions": [
+        "USE_BIOMETRIC",
+        "USE_FINGERPRINT",
+        "VIBRATE",
+        "POST_NOTIFICATIONS"
+      ]
+    },
+    "plugins": [
+      [
+        "expo-local-authentication",
+        {
+          "faceIDPermission": "Allow AAKAASH ADHINAYAK to unlock with Face ID."
+        }
+      ],
+      [
+        "expo-secure-store",
+        {
+          "configureAndroidBackup": true
+        }
+      ],
+      [
+        "expo-sqlite",
+        {
+          "useSQLCipher": false
+        }
+      ],
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/icon-192.png",
+          "color": "#43d4e7",
+          "defaultChannel": "general"
+        }
+      ],
+      [
+        "expo-print",
+        {}
+      ]
+    ],
+    "extra": {
+      "appMode": "NON_OPERATIONAL_STUDENT_DEMO",
+      "syncEndpoint": ""
+    }
+  }
+}

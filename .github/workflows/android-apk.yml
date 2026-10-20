@@ -13,7 +13,7 @@ permissions:
 
 jobs:
   build-apk:
-    name: Build installable debug APK
+    name: Build installable sideload APK
     runs-on: ubuntu-latest
     timeout-minutes: 45
     defaults:
@@ -43,17 +43,26 @@ jobs:
         run: npx tsc --noEmit
       - name: Generate native Android project
         run: npx expo prebuild --platform android --no-install --clean
-      - name: Build APK
+      - name: Build self-contained APK
         run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('android/app/build.gradle')
+          s = p.read_text()
+          needle = 'signingConfig signingConfigs.release'
+          if needle not in s:
+              raise SystemExit('Expected Expo release signing line was not found; stopping rather than building an incorrectly signed package.')
+          p.write_text(s.replace(needle, 'signingConfig signingConfigs.debug', 1))
+          PY
           cd android
           chmod +x gradlew
-          ./gradlew --no-daemon assembleDebug
+          ./gradlew --no-daemon assembleRelease
           mkdir -p ../artifacts
-          cp app/build/outputs/apk/debug/app-debug.apk ../artifacts/AAKAASH-ADHINAYAK-debug.apk
+          cp app/build/outputs/apk/release/app-release.apk ../artifacts/AAKAASH-ADHINAYAK-sideload.apk
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
-          name: AAKAASH-ADHINAYAK-debug-APK
-          path: mobile-native/artifacts/AAKAASH-ADHINAYAK-debug.apk
+          name: AAKAASH-ADHINAYAK-Android-APK
+          path: mobile-native/artifacts/AAKAASH-ADHINAYAK-sideload.apk
           if-no-files-found: error
           retention-days: 30

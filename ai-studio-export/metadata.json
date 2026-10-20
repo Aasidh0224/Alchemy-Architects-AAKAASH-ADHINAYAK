@@ -1,0 +1,6 @@
+{
+  "name": "Aakaash Adhinayak",
+  "description": "Verified Intelligence for Adaptive Resource Planning - Air Power: Dynamic Air Operations & Resource Optimisation platform featuring 3D aerospace constellation visualizer, deterministic solver, independent constraint validation, and VAYU NEXA AI.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
